@@ -41,7 +41,7 @@ var Page1 = {
   　本研究はひらがなを基にした架空の文字の類似度と不気味さの関係性について\
   検討することを目的としています。この実験は文字の類似度を明らかにして、\
   本実験の尺度を作成するために行います。\
-  <br><br>\
+  <br>\
   　この実験は参加を強制するものではございません。途中で答えたくないと\
   感じたり、気分が悪くなったりした場合はお申し出ください。\
   　また、 得られた回答は全て数値化して厳重に保管し、個人が特定されないように\
@@ -99,8 +99,17 @@ var eyepoint = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: '<p style="font-size: 48px;">+</p>',
   choices: "NO_KEYS",
-  trial_duration: 1500,
+  trial_duration: 1000,
 };
+
+// 凝視点Lサイズ
+var eyepointL = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: '<p style="font-size: 96px;">+</p>',
+  choices: "NO_KEYS",
+  trial_duration: 1000,
+};
+
 
 // 空白画面
 var blankscreen = {
@@ -145,6 +154,15 @@ var examPictures = [
   { filename: '3.png',
   labels: ['100%<br><font size=60>え</font>','90%','80%','70%','60%','50%','40%','30%','20%','10%','0%', '10%','20%','30%','40%','50%','60%','70%','80%','90%','100%<br><font size=60>て</font>' ]
 },
+  { filename: '4.png',
+labels: ['100%<br><font size=60>を</font>','90%','80%','70%','60%','50%','40%','30%','20%','10%','0%', '10%','20%','30%','40%','50%','60%','70%','80%','90%','100%<br><font size=60>あ</font>' ]
+},
+  { filename: '5.png',
+labels: ['100%<br><font size=60>き</font>','90%','80%','70%','60%','50%','40%','30%','20%','10%','0%', '10%','20%','30%','40%','50%','60%','70%','80%','90%','100%<br><font size=60>み</font>' ]
+},
+  { filename: '6.png',
+labels: ['100%<br><font size=60>と</font>','90%','80%','70%','60%','50%','40%','30%','20%','10%','0%', '10%','20%','30%','40%','50%','60%','70%','80%','90%','100%<br><font size=60>ろ</font>' ]
+},
 ];
 
 // 順番をランダマイズしたいので指定しておく
@@ -166,19 +184,51 @@ for (let i = 0; i< examPictures.length; i++) {
   sequence[target] = tmpseq
 }
 
+var showimage0 = {
+  type: jsPsychImageKeyboardResponse,
+  stimulus: examPictures[0].filename,
+  stimulus_height: 600 ,
+  stimulus_width: 600 ,
+  choices: "NO_KEYS",
+  trial_duration: 3000,
+};
+
+var showimage5 = {
+  type: jsPsychImageKeyboardResponse,
+  stimulus: examPictures[5].filename,
+  stimulus_height: 600 ,
+  stimulus_width: 600 ,
+  choices: "NO_KEYS",
+  trial_duration: 3000,
+};
+
+var response0 = {
+  type: jsPsychHtmlSliderResponse,
+    stimulus: 'どちらの文字にどれくらいの割合で似ていると感じたか、該当する目盛をクリックしてください。<br><br>',
+    min: -100,
+    max: 100,
+    slider_start: 0,
+    step: 10,
+    slider_width: 1000,
+    button_label: '次へ',
+    labels: examPictures[0].labels,
+};
+
+
 //問題の個数分ループ ここから
-for (let i = 0; i< examPictures.length; i++) {
+//for (let i = 0; i< examPictures.length; i++) {
 
 // 問題一式の作成 (画像表示 + 選択肢)
 // ---------------------------------------------------------------
 // 画像表示
+/*
 var showimage = {
   type: jsPsychImageKeyboardResponse,
   stimulus: examPictures[sequence[i]].filename,
-  stimulus_height: 800 ,
-  stimulus_width: 800 ,
+  stimulus_height: 600 ,
+  stimulus_width: 600 ,
   choices: "NO_KEYS",
-  trial_duration: 5000,
+  trial_duration: 3000,
 };
 
 // 選択肢
@@ -193,14 +243,50 @@ var response = {
     button_label: '次へ',
     labels: examPictures[sequence[i]].labels,
 };
+*/
 
+// 選択肢パターンB
+var likert_scale = [
+  "0%", 
+  "10%", 
+  "20%", 
+  "30%", 
+  "40%", 
+  "50%", 
+  "60%", 
+  "70%", 
+  "80%", 
+  "90%", 
+  "100%", 
+];
+
+var responseB = {
+  type: jsPsychSurveyLikert,
+  preamble: 'これらの文字にどれくらいの割合で似ていると感じたか、該当する割合(%)を選んでください',
+  scale_width: 600 ,
+  questions: [
+    {prompt: "<div align=left><font size=96>と</font></div>", name: 'a1', labels: likert_scale},
+    {prompt: "<div align=left><font size=96>ろ</font></div>", name: 'a1', labels: likert_scale},
+    {prompt: "<div align=left><font size=96>し</font></div>", name: 'a1', labels: likert_scale},
+  ],
+  randomize_question_order: false
+};
+
+// 当初パターン
 trials.timeline.push(blankscreen) ;
-trials.timeline.push(eyepoint) ;
-trials.timeline.push(showimage) ;
-trials.timeline.push(response) ;
+trials.timeline.push(eyepointL) ;
+trials.timeline.push(showimage0) ;
+trials.timeline.push(response0) ;
+
+// パターン2
+trials.timeline.push(blankscreen) ;
+trials.timeline.push(eyepointL) ;
+trials.timeline.push(showimage5) ;
+trials.timeline.push(responseB) ;
 // ---------------------------------------------------------------
 
-}
+
+//}
 //問題の個数分ループ ここまで
 
 
