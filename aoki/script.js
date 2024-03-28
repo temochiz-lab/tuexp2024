@@ -67,8 +67,18 @@ var Page2 = {
   button_label: '次へ',
 };
 
-// この後実験開始
+// この後開始
 var Page3 = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: '<div align=center> \
+  次のページから練習が始まります。<br>\
+  準備が出来ましたら、「次へ」ボタンを押して開始してください。\
+  <br><br></div>',
+ choices: ['次へ'],
+};
+
+// この後実験開始
+var Page4 = {
   type: jsPsychHtmlButtonResponse,
   stimulus: '<div align=center> \
   次のページから実験が始まります。<br>\
@@ -142,109 +152,6 @@ var preload = {
 // 実験のメインまわり
 // ------------------------------------------------------------------------
 
-// 画像ファイルの用意
-var baseURL = './' ;
-var examPictures = [
-  { filename: '1.png', 
-  labels: ['100%<br><font size=60>を</font>','90%','80%','70%','60%','50%','40%','30%','20%','10%','0%', '10%','20%','30%','40%','50%','60%','70%','80%','90%','100%<br><font size=60>あ</font>' ]
-},
-  { filename: '2.png',
-  labels: ['100%<br><font size=60>す</font>','90%','80%','70%','60%','50%','40%','30%','20%','10%','0%', '10%','20%','30%','40%','50%','60%','70%','80%','90%','100%<br><font size=60>せ</font>' ]
-},
-  { filename: '3.png',
-  labels: ['100%<br><font size=60>え</font>','90%','80%','70%','60%','50%','40%','30%','20%','10%','0%', '10%','20%','30%','40%','50%','60%','70%','80%','90%','100%<br><font size=60>て</font>' ]
-},
-  { filename: '4.png',
-labels: ['100%<br><font size=60>を</font>','90%','80%','70%','60%','50%','40%','30%','20%','10%','0%', '10%','20%','30%','40%','50%','60%','70%','80%','90%','100%<br><font size=60>あ</font>' ]
-},
-  { filename: '5.png',
-labels: ['100%<br><font size=60>き</font>','90%','80%','70%','60%','50%','40%','30%','20%','10%','0%', '10%','20%','30%','40%','50%','60%','70%','80%','90%','100%<br><font size=60>み</font>' ]
-},
-  { filename: '6.png',
-labels: ['100%<br><font size=60>と</font>','90%','80%','70%','60%','50%','40%','30%','20%','10%','0%', '10%','20%','30%','40%','50%','60%','70%','80%','90%','100%<br><font size=60>ろ</font>' ]
-},
-];
-
-// 順番をランダマイズしたいので指定しておく
-var trials = {
-  timeline: [],
-//  timeline_variables: examPictures,
-//  randomize_order: true,
-};
-
-// ランダマイズ
-var sequence = [] ;
-for (let i = 0; i< examPictures.length; i++) {
-  sequence[i] = i ;
-}
-for (let i = 0; i< examPictures.length; i++) {
-  target           =  Math.floor(Math.random() * examPictures.length) ;
-  tmpseq           = sequence[i] ;
-  sequence[i]      = sequence[target] ;
-  sequence[target] = tmpseq
-}
-
-var showimage0 = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: examPictures[0].filename,
-  stimulus_height: 600 ,
-  stimulus_width: 600 ,
-  choices: "NO_KEYS",
-  trial_duration: 3000,
-};
-
-var showimage5 = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: examPictures[5].filename,
-  stimulus_height: 600 ,
-  stimulus_width: 600 ,
-  choices: "NO_KEYS",
-  trial_duration: 3000,
-};
-
-var response0 = {
-  type: jsPsychHtmlSliderResponse,
-    stimulus: 'どちらの文字にどれくらいの割合で似ていると感じたか、該当する目盛をクリックしてください。<br><br>',
-    min: -100,
-    max: 100,
-    slider_start: 0,
-    step: 10,
-    slider_width: 1000,
-    button_label: '次へ',
-    labels: examPictures[0].labels,
-};
-
-
-//問題の個数分ループ ここから
-//for (let i = 0; i< examPictures.length; i++) {
-
-// 問題一式の作成 (画像表示 + 選択肢)
-// ---------------------------------------------------------------
-// 画像表示
-/*
-var showimage = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: examPictures[sequence[i]].filename,
-  stimulus_height: 600 ,
-  stimulus_width: 600 ,
-  choices: "NO_KEYS",
-  trial_duration: 3000,
-};
-
-// 選択肢
-var response = {
-  type: jsPsychHtmlSliderResponse,
-    stimulus: 'どちらの文字にどれくらいの割合で似ていると感じたか、該当する目盛をクリックしてください。<br><br>',
-    min: -100,
-    max: 100,
-    slider_start: 0,
-    step: 10,
-    slider_width: 1000,
-    button_label: '次へ',
-    labels: examPictures[sequence[i]].labels,
-};
-*/
-
 // 選択肢パターンB
 var likert_scale = [
   "0%", 
@@ -260,36 +167,140 @@ var likert_scale = [
   "100%", 
 ];
 
-var responseB = {
+// 画像ファイルの用意
+var baseURL = './' ;
+var fontPre = "<div align=left><font size=96 face='ＭＳ ゴシック'>" ;
+var fontPos = "</font></div>" ;
+var examPictures = [
+  { filename: '0.png', 
+  questions: [
+    {prompt: fontPre + "を" + fontPos, labels: likert_scale},
+    {prompt: fontPre + "あ" + fontPos, labels: likert_scale},
+  ],
+},
+  { filename: '1.png',
+  questions: [
+    {prompt: fontPre + "す" + fontPos, labels: likert_scale},
+    {prompt: fontPre + "せ" + fontPos, labels: likert_scale},
+  ],
+},
+  { filename: '2.png',
+  questions: [
+    {prompt: fontPre + "え" + fontPos, labels: likert_scale},
+    {prompt: fontPre + "て" + fontPos, labels: likert_scale},
+  ],
+},
+  { filename: '3.png',
+  questions: [
+    {prompt: fontPre + "を" + fontPos, labels: likert_scale},
+    {prompt: fontPre + "あ" + fontPos, labels: likert_scale},
+  ],
+},
+  { filename: '4.png',
+questions: [
+  {prompt: fontPre + "き" + fontPos, labels: likert_scale},
+  {prompt: fontPre + "み" + fontPos, labels: likert_scale},
+],
+},
+  { filename: '5.png',
+questions: [
+  {prompt: fontPre + "と" + fontPos, labels: likert_scale},
+  {prompt: fontPre + "ろ" + fontPos, labels: likert_scale},
+  {prompt: fontPre + "し" + fontPos, labels: likert_scale},
+],
+},
+];
+
+// ---------------------------------------------------------------------
+// 練習試行
+var pretrials = {
+  timeline: [],
+//  timeline_variables: examPictures,
+//  randomize_order: true,
+};
+
+var showimage0 = {
+  type: jsPsychImageKeyboardResponse,
+  stimulus: examPictures[0].filename,
+  stimulus_height: 600 ,
+  stimulus_width: 600 ,
+  choices: "NO_KEYS",
+  trial_duration: 3000,
+};
+
+var response0 = {
   type: jsPsychSurveyLikert,
   preamble: 'これらの文字にどれくらいの割合で似ていると感じたか、該当する割合(%)を選んでください',
   scale_width: 600 ,
-  questions: [
-    {prompt: "<div align=left><font size=96>と</font></div>", name: 'a1', labels: likert_scale},
-    {prompt: "<div align=left><font size=96>ろ</font></div>", name: 'a1', labels: likert_scale},
-    {prompt: "<div align=left><font size=96>し</font></div>", name: 'a1', labels: likert_scale},
-  ],
+  questions: examPictures[0].questions,
   randomize_question_order: false
 };
 
 // 当初パターン
-trials.timeline.push(blankscreen) ;
-trials.timeline.push(eyepointL) ;
-trials.timeline.push(showimage0) ;
-trials.timeline.push(response0) ;
+pretrials.timeline.push(blankscreen) ;
+pretrials.timeline.push(eyepointL) ;
+pretrials.timeline.push(showimage0) ;
+pretrials.timeline.push(response0) ;
 
-// パターン2
+// ---------------------------------------------------------------------
+// 本番試行
+// 順番をランダマイズしたいので指定しておく
+var trials = {
+  timeline: [],
+//  timeline_variables: examPictures,
+//  randomize_order: true,
+};
+
+// ランダマイズ
+var sequence = [] ;
+for (let i = 0; i< examPictures.length; i++) {
+  sequence[i] = i ;
+}
+
+
+for (let i = 0; i< examPictures.length; i++) {
+  target           =  Math.floor(Math.random() * examPictures.length) ;
+  tmpseq           = sequence[i] ;
+  sequence[i]      = sequence[target] ;
+  sequence[target] = tmpseq
+}
+
+
+//問題の個数分ループ ここから
+for (let i = 0; i< examPictures.length; i++) {
+
+// 問題一式の作成 (画像表示 + 選択肢)
+// ---------------------------------------------------------------
+// 画像表示
+
+var showimage = {
+  type: jsPsychImageKeyboardResponse,
+  stimulus: examPictures[sequence[i]].filename,
+  stimulus_height: 600 ,
+  stimulus_width: 600 ,
+  choices: "NO_KEYS",
+  trial_duration: 3000,
+};
+
+// 選択肢
+var response = {
+  type: jsPsychSurveyLikert,
+  preamble: 'これらの文字にどれくらいの割合で似ていると感じたか、該当する割合(%)を選んでください',
+  scale_width: 600 ,
+  questions: examPictures[sequence[i]].questions,
+  randomize_question_order: false
+};
+
+// TLにpush
 trials.timeline.push(blankscreen) ;
 trials.timeline.push(eyepointL) ;
-trials.timeline.push(showimage5) ;
-trials.timeline.push(responseB) ;
+trials.timeline.push(showimage) ;
+trials.timeline.push(response) ;
+
 // ---------------------------------------------------------------
 
-
-//}
+}
 //問題の個数分ループ ここまで
-
-
 
 // ------------------------------------------------------------------------
 // 実験の開始
@@ -297,4 +308,5 @@ trials.timeline.push(responseB) ;
 
 //jsPsych.run([preload,enter_fullscreen,Page1,par_id,hello,trials,bye,exit_fullscreen]);
 //jsPsych.run([trials]);
-jsPsych.run([enter_fullscreen,Page1,Page2,Page3,trials,bye,exit_fullscreen]);
+jsPsych.run([enter_fullscreen,Page1,Page2,Page3,pretrials,Page4,trials,bye,exit_fullscreen]);
+//jsPsych.run([trials,bye,exit_fullscreen]);
