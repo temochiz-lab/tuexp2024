@@ -154,7 +154,7 @@ var preload = {
 // 実験のメインまわり
 // ------------------------------------------------------------------------
 
-// 選択肢パターンB
+// 質問ページ1の選択肢(練習/本番共通)
 var likert_scale = [
   "0%", 
   "10%", 
@@ -169,235 +169,102 @@ var likert_scale = [
   "100%", 
 ];
 
+// 質問ページ2の選択肢と、質問ページ2の本体(練習/本番共通)
+var Page2Questions = 
+  [
+  {prompt: "どれくらい文字らしく見えましたか", labels: likert_scale},
+  {prompt: "どれくらい不気味だと思いましたか", labels: likert_scale},
+  {prompt: "どれくらいゾワゾワと感じましたか", labels: likert_scale},
+ ] ;
+
+var responsePage2 = {
+  type: jsPsychSurveyLikert,
+  preamble: 'これらの文字から受けた印象を、該当する割合(%)を選んでください',
+  scale_width: 1200 ,
+  questions: Page2Questions,
+  randomize_question_order: false
+};
+
 // 画像ファイルの用意
 var baseURL = './' ;
 var fontPre = "<div align=left><font size=128 face='ＭＳ ゴシック'>" ;
 var fontPos = "</font></div>" ;
-var examPictures = [
-  { filename: '0.png', 
-  questions: [
-    {prompt: fontPre + "を" + fontPos, labels: likert_scale},
-    {prompt: fontPre + "あ" + fontPos, labels: likert_scale},
-  ],
-},
-  { filename: '1.png',
-  questions: [
-    {prompt: fontPre + "す" + fontPos, labels: likert_scale},
-    {prompt: fontPre + "せ" + fontPos, labels: likert_scale},
-  ],
-},
-  { filename: '2.png',
-  questions: [
-    {prompt: fontPre + "え" + fontPos, labels: likert_scale},
-    {prompt: fontPre + "て" + fontPos, labels: likert_scale},
-  ],
-},
-  { filename: '3.png',
-  questions: [
-    {prompt: fontPre + "を" + fontPos, labels: likert_scale},
-    {prompt: fontPre + "あ" + fontPos, labels: likert_scale},
-  ],
-},
-  { filename: '4.png',
-questions: [
-  {prompt: fontPre + "き" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "み" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '0.png', 
-questions: [
-  {prompt: fontPre + "を" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "あ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '1.png',
-questions: [
-  {prompt: fontPre + "す" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "せ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '2.png',
-questions: [
-  {prompt: fontPre + "え" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "て" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '3.png',
-questions: [
-  {prompt: fontPre + "を" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "あ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '4.png',
-questions: [
-{prompt: fontPre + "き" + fontPos, labels: likert_scale},
-{prompt: fontPre + "み" + fontPos, labels: likert_scale},
-],
-},
-// ------------------------------------------------------------------------------
-{ filename: '0.png', 
-questions: [
-  {prompt: fontPre + "を" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "あ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '1.png',
-questions: [
-  {prompt: fontPre + "す" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "せ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '2.png',
-questions: [
-  {prompt: fontPre + "え" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "て" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '3.png',
-questions: [
-  {prompt: fontPre + "を" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "あ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '4.png',
-questions: [
-{prompt: fontPre + "き" + fontPos, labels: likert_scale},
-{prompt: fontPre + "み" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '0.png', 
-questions: [
-{prompt: fontPre + "を" + fontPos, labels: likert_scale},
-{prompt: fontPre + "あ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '1.png',
-questions: [
-{prompt: fontPre + "す" + fontPos, labels: likert_scale},
-{prompt: fontPre + "せ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '2.png',
-questions: [
-{prompt: fontPre + "え" + fontPos, labels: likert_scale},
-{prompt: fontPre + "て" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '3.png',
-questions: [
-{prompt: fontPre + "を" + fontPos, labels: likert_scale},
-{prompt: fontPre + "あ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '4.png',
-questions: [
-{prompt: fontPre + "き" + fontPos, labels: likert_scale},
-{prompt: fontPre + "み" + fontPos, labels: likert_scale},
-],
-},
-
-// ------------------------------------------------------------------------------
-{ filename: '0.png', 
-questions: [
-  {prompt: fontPre + "を" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "あ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '1.png',
-questions: [
-  {prompt: fontPre + "す" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "せ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '2.png',
-questions: [
-  {prompt: fontPre + "え" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "て" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '3.png',
-questions: [
-  {prompt: fontPre + "を" + fontPos, labels: likert_scale},
-  {prompt: fontPre + "あ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '4.png',
-questions: [
-{prompt: fontPre + "き" + fontPos, labels: likert_scale},
-{prompt: fontPre + "み" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '0.png', 
-questions: [
-{prompt: fontPre + "を" + fontPos, labels: likert_scale},
-{prompt: fontPre + "あ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '1.png',
-questions: [
-{prompt: fontPre + "す" + fontPos, labels: likert_scale},
-{prompt: fontPre + "せ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '2.png',
-questions: [
-{prompt: fontPre + "え" + fontPos, labels: likert_scale},
-{prompt: fontPre + "て" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '3.png',
-questions: [
-{prompt: fontPre + "を" + fontPos, labels: likert_scale},
-{prompt: fontPre + "あ" + fontPos, labels: likert_scale},
-],
-},
-{ filename: '4.png',
-questions: [
-{prompt: fontPre + "き" + fontPos, labels: likert_scale},
-{prompt: fontPre + "み" + fontPos, labels: likert_scale},
-],
-},
-
-
-
-
-
-
-];
 
 // ---------------------------------------------------------------------
 // 練習試行
-var pretrials = {
+// ---------------------------------------------------------------------
+var PracticeExamPictures = [
+  { filename: 'practice/と-ろ.png',   questions: [    {prompt: fontPre + "と" + fontPos, labels: likert_scale},    {prompt: fontPre + "ろ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'practice/ま-み.png',   questions: [    {prompt: fontPre + "ま" + fontPos, labels: likert_scale},    {prompt: fontPre + "み" + fontPos, labels: likert_scale},  ],},
+  { filename: 'practice/を-あ.png',   questions: [    {prompt: fontPre + "を" + fontPos, labels: likert_scale},    {prompt: fontPre + "あ" + fontPos, labels: likert_scale},  ],},
+];
+
+var PracticeTrials = {
   timeline: [],
 //  timeline_variables: examPictures,
 //  randomize_order: true,
 };
 
-var showimage0 = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: examPictures[0].filename,
-  stimulus_height: 1200 ,
-  stimulus_width: 1200 ,
-  choices: "NO_KEYS",
-  trial_duration: 3000,
+for (let i = 0; i< PracticeExamPictures.length; i++) {
+//for (let i = 0; i< 1; i++) {
+
+  var showimage0 = {
+    type: jsPsychImageKeyboardResponse,
+    stimulus: PracticeExamPictures[i].filename,
+    stimulus_height: 1200 ,
+    stimulus_width: 1200 ,
+    choices: "NO_KEYS",
+    trial_duration: 3000,
+  };
+
+  var responsePage1 = {
+    type: jsPsychSurveyLikert,
+    preamble: 'これらの文字にどれくらいの割合で似ていると感じたか、該当する割合(%)を選んでください',
+    scale_width: 1200 ,
+    questions: PracticeExamPictures[i].questions,
+    randomize_question_order: false
 };
 
-var response0 = {
-  type: jsPsychSurveyLikert,
-  preamble: 'これらの文字にどれくらいの割合で似ていると感じたか、該当する割合(%)を選んでください',
-  scale_width: 1200 ,
-  questions: examPictures[0].questions,
-  randomize_question_order: false
-};
+  // 作成した問題1セットをキューイング
+  PracticeTrials.timeline.push(blankscreen) ;
+  PracticeTrials.timeline.push(eyepointL) ;
+  PracticeTrials.timeline.push(showimage0) ;
+  PracticeTrials.timeline.push(responsePage1) ;
+  PracticeTrials.timeline.push(responsePage2) ;
 
-// 当初パターン
-pretrials.timeline.push(blankscreen) ;
-pretrials.timeline.push(eyepointL) ;
-pretrials.timeline.push(showimage0) ;
-pretrials.timeline.push(response0) ;
+}
 
 // ---------------------------------------------------------------------
 // 本番試行
+
+// ------------------------------------------------------------------------------
+var examPictures = [
+  { filename: 'actual/い-ま.jpg',  questions: [    {prompt: fontPre + "い" + fontPos, labels: likert_scale},    {prompt: fontPre + "ま" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/う-こ.jpg',  questions: [    {prompt: fontPre + "う" + fontPos, labels: likert_scale},    {prompt: fontPre + "こ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/か-え.jpg',  questions: [    {prompt: fontPre + "か" + fontPos, labels: likert_scale},    {prompt: fontPre + "え" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/く-へ.jpg',  questions: [    {prompt: fontPre + "く" + fontPos, labels: likert_scale},    {prompt: fontPre + "へ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/け-て.jpg',  questions: [    {prompt: fontPre + "け" + fontPos, labels: likert_scale},    {prompt: fontPre + "て" + fontPos, labels: likert_scale},  ],},
+
+  { filename: 'actual/さ-わ.jpg',  questions: [    {prompt: fontPre + "さ" + fontPos, labels: likert_scale},    {prompt: fontPre + "わ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/せ-ん.jpg',  questions: [    {prompt: fontPre + "せ" + fontPos, labels: likert_scale},    {prompt: fontPre + "ん" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/た-み.jpg',  questions: [    {prompt: fontPre + "た" + fontPos, labels: likert_scale},    {prompt: fontPre + "み" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/つ-し.jpg',  questions: [    {prompt: fontPre + "つ" + fontPos, labels: likert_scale},    {prompt: fontPre + "し" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/に-な.jpg',  questions: [    {prompt: fontPre + "に" + fontPos, labels: likert_scale},    {prompt: fontPre + "な" + fontPos, labels: likert_scale},  ],},
+
+  { filename: 'actual/ぬ-す.jpg',  questions: [    {prompt: fontPre + "ぬ" + fontPos, labels: likert_scale},    {prompt: fontPre + "す" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/は-ら.jpg',  questions: [    {prompt: fontPre + "は" + fontPos, labels: likert_scale},    {prompt: fontPre + "ら" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/ふ-ね.jpg',  questions: [    {prompt: fontPre + "ふ" + fontPos, labels: likert_scale},    {prompt: fontPre + "や" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/ほ-や.jpg',  questions: [    {prompt: fontPre + "ほ" + fontPos, labels: likert_scale},    {prompt: fontPre + "ね" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/む-ろ.jpg',  questions: [    {prompt: fontPre + "む" + fontPos, labels: likert_scale},    {prompt: fontPre + "ろ" + fontPos, labels: likert_scale},  ],},
+
+  { filename: 'actual/め-れ.jpg',  questions: [    {prompt: fontPre + "め" + fontPos, labels: likert_scale},    {prompt: fontPre + "れ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/も-そ.jpg',  questions: [    {prompt: fontPre + "も" + fontPos, labels: likert_scale},    {prompt: fontPre + "そ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/ゆ-ち.jpg',  questions: [    {prompt: fontPre + "ゆ" + fontPos, labels: likert_scale},    {prompt: fontPre + "ち" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/よ-を.jpg',  questions: [    {prompt: fontPre + "よ" + fontPos, labels: likert_scale},    {prompt: fontPre + "を" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/る-と.jpg',  questions: [    {prompt: fontPre + "る" + fontPos, labels: likert_scale},    {prompt: fontPre + "と" + fontPos, labels: likert_scale},  ],}
+];
+
+
 // 順番をランダマイズしたいので指定しておく
 var trials = {
   timeline: [],
@@ -410,8 +277,6 @@ var sequence = [] ;
 for (let i = 0; i< examPictures.length; i++) {
   sequence[i] = i ;
 }
-
-
 for (let i = 0; i< examPictures.length; i++) {
   target           =  Math.floor(Math.random() * examPictures.length) ;
   tmpseq           = sequence[i] ;
@@ -420,41 +285,40 @@ for (let i = 0; i< examPictures.length; i++) {
 }
 
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 //問題の個数分ループ ここから
 for (let i = 0; i< examPictures.length; i++) {
+  // 問題一式の作成 (画像表示 + 選択肢)
+  // 画像表示
 
-// 問題一式の作成 (画像表示 + 選択肢)
-// ---------------------------------------------------------------
-// 画像表示
+  var showimage = {
+    type: jsPsychImageKeyboardResponse,
+    stimulus: examPictures[sequence[i]].filename,
+    stimulus_height: 1200 ,
+    stimulus_width: 1200 ,
+    choices: "NO_KEYS",
+    trial_duration: 3000,
+  };
 
-var showimage = {
-  type: jsPsychImageKeyboardResponse,
-  stimulus: examPictures[sequence[i]].filename,
-  stimulus_height: 1200 ,
-  stimulus_width: 1200 ,
-  choices: "NO_KEYS",
-  trial_duration: 3000,
-};
+  // 選択肢
+  var response = {
+    type: jsPsychSurveyLikert,
+    preamble: 'これらの文字にどれくらいの割合で似ていると感じたか、該当する割合(%)を選んでください',
+    scale_width: 1200 ,
+    questions: examPictures[sequence[i]].questions,
+    randomize_question_order: false
+  };
 
-// 選択肢
-var response = {
-  type: jsPsychSurveyLikert,
-  preamble: 'これらの文字にどれくらいの割合で似ていると感じたか、該当する割合(%)を選んでください',
-  scale_width: 1200 ,
-  questions: examPictures[sequence[i]].questions,
-  randomize_question_order: false
-};
+  // TLにpush
+  trials.timeline.push(blankscreen) ;
+  trials.timeline.push(eyepointL) ;
+  trials.timeline.push(showimage) ;
+  trials.timeline.push(response) ;
+  trials.timeline.push(responsePage2) ;
 
-// TLにpush
-trials.timeline.push(blankscreen) ;
-trials.timeline.push(eyepointL) ;
-trials.timeline.push(showimage) ;
-trials.timeline.push(response) ;
 
-// ---------------------------------------------------------------
-
-}
-//問題の個数分ループ ここまで
+}//問題の個数分ループ ここまで
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // ------------------------------------------------------------------------
 // 実験の開始
@@ -462,5 +326,5 @@ trials.timeline.push(response) ;
 
 //jsPsych.run([preload,enter_fullscreen,Page1,par_id,hello,trials,bye,exit_fullscreen]);
 //jsPsych.run([trials]);
-jsPsych.run([enter_fullscreen,Page1,Page2,Page3,pretrials,Page4,trials,bye,exit_fullscreen]);
+jsPsych.run([enter_fullscreen,Page1,Page2,Page3,PracticeTrials,Page4,trials,bye,exit_fullscreen]);
 //jsPsych.run([trials,bye,exit_fullscreen]);
