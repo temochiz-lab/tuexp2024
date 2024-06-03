@@ -89,6 +89,17 @@ var Page4 = {
  choices: ['次へ'],
 };
 
+var Breaktime = {
+  type: jsPsychHtmlButtonResponse,
+  stimulus: '<div align=center> \
+  休憩<br><br>\
+  1分間目を閉じて休んでください。<br>\
+  準備が出来ましたら、「次へ」ボタンを押して開始してください。\
+  <br><br></div>',
+ choices: ['次へ'],
+};
+
+
 // 最初の説明と被検者情報の入力
 var par_id = {
   type: jsPsychSurveyText,
@@ -316,6 +327,9 @@ for (let i = 0; i< examPictures.length; i++) {
   trials.timeline.push(response) ;
   trials.timeline.push(responsePage2) ;
 
+  if ( i == 10) // 11問終わったところで休憩表示
+    trials.timeline.push(Breaktime) ;
+ 
 
 }//問題の個数分ループ ここまで
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
