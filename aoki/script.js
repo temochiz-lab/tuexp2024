@@ -28,7 +28,7 @@ var jsPsych = initJsPsych({
 // フルスクリーン開始
 var enter_fullscreen = {
   type: jsPsychFullscreen,
-  message: '<p>実験名: aoki2024-01</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
+  message: '<p>実験名: aoki2024-03</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
   button_label: "開始",
   fullscreen_mode: true
 }
@@ -194,9 +194,8 @@ var fontPos = "</font></div>" ;
 // 練習試行
 // ---------------------------------------------------------------------
 var PracticeExamPictures = [
-  { filename: 'practice/と-ろ.png',   questions: [    {prompt: fontPre + "と" + fontPos, labels: likert_scale},    {prompt: fontPre + "ろ" + fontPos, labels: likert_scale},  ],},
-  { filename: 'practice/ま-み.png',   questions: [    {prompt: fontPre + "ま" + fontPos, labels: likert_scale},    {prompt: fontPre + "み" + fontPos, labels: likert_scale},  ],},
-  { filename: 'practice/を-あ.png',   questions: [    {prompt: fontPre + "を" + fontPos, labels: likert_scale},    {prompt: fontPre + "あ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'practice/ま-み.jpg',   questions: [    {prompt: fontPre + "ま" + fontPos, labels: likert_scale},    {prompt: fontPre + "み" + fontPos, labels: likert_scale},  ],},
+  { filename: 'practice/を-あ.jpg',   questions: [    {prompt: fontPre + "を" + fontPos, labels: likert_scale},    {prompt: fontPre + "あ" + fontPos, labels: likert_scale},  ],},
 ];
 
 var PracticeTrials = {
