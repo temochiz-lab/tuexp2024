@@ -28,7 +28,7 @@ var jsPsych = initJsPsych({
 // フルスクリーン開始
 var enter_fullscreen = {
   type: jsPsychFullscreen,
-  message: '<p>実験名: aoki2024-0604-04</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
+  message: '<p>実験名: aoki2024-0705-01</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
   button_label: "開始",
   fullscreen_mode: true
 }
@@ -250,31 +250,35 @@ for (let i = 0; i< PracticeExamPictures.length; i++) {
 
 // ------------------------------------------------------------------------------
 var examPictures = [
-  { filename: 'actual/い-ま.jpg',  questions: [    {prompt: fontPreAct + "い" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ま" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/う-こ.jpg',  questions: [    {prompt: fontPreAct + "う" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "こ" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/か-え.jpg',  questions: [    {prompt: fontPreAct + "か" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "え" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/く-へ.jpg',  questions: [    {prompt: fontPreAct + "く" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "へ" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/け-て.jpg',  questions: [    {prompt: fontPreAct + "け" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "て" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/あ_き.jpg',  questions: [    {prompt: fontPreAct + "あ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "き" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/か_え.jpg',  questions: [    {prompt: fontPreAct + "か" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "え" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/く_へ.jpg',  questions: [    {prompt: fontPreAct + "く" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "へ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/け_て.jpg',  questions: [    {prompt: fontPreAct + "け" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "て" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/こ_う.jpg',  questions: [    {prompt: fontPreAct + "こ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "う" + fontPos, labels: likert_scale},  ],},
 
-  { filename: 'actual/さ-わ.jpg',  questions: [    {prompt: fontPreAct + "さ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "わ" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/せ-ん.jpg',  questions: [    {prompt: fontPreAct + "せ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ん" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/た-み.jpg',  questions: [    {prompt: fontPreAct + "た" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "み" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/つ-し.jpg',  questions: [    {prompt: fontPreAct + "つ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "し" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/に-な.jpg',  questions: [    {prompt: fontPreAct + "に" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "な" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/さ_わ.jpg',  questions: [    {prompt: fontPreAct + "さ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "わ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/し_つ.jpg',  questions: [    {prompt: fontPreAct + "し" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "つ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/す_ぬ.jpg',  questions: [    {prompt: fontPreAct + "す" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ぬ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/せ_ん.jpg',  questions: [    {prompt: fontPreAct + "せ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ん" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/な_に.jpg',  questions: [    {prompt: fontPreAct + "な" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "に" + fontPos, labels: likert_scale},  ],},
 
-  { filename: 'actual/ぬ-す.jpg',  questions: [    {prompt: fontPreAct + "ぬ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "す" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/は-ら.jpg',  questions: [    {prompt: fontPreAct + "は" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ら" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/ふ-ね.jpg',  questions: [    {prompt: fontPreAct + "ふ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "や" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/ほ-や.jpg',  questions: [    {prompt: fontPreAct + "ほ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ね" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/む-ろ.jpg',  questions: [    {prompt: fontPreAct + "む" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ろ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/は_ら.jpg',  questions: [    {prompt: fontPreAct + "は" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ら" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/ひ_の.jpg',  questions: [    {prompt: fontPreAct + "ひ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "の" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/ふ_ね.jpg',  questions: [    {prompt: fontPreAct + "ふ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ね" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/ま_い.jpg',  questions: [    {prompt: fontPreAct + "ま" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "い" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/み_た.jpg',  questions: [    {prompt: fontPreAct + "み" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "た" + fontPos, labels: likert_scale},  ],},
 
-  { filename: 'actual/め-れ.jpg',  questions: [    {prompt: fontPreAct + "め" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "れ" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/も-そ.jpg',  questions: [    {prompt: fontPreAct + "も" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "そ" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/ゆ-ち.jpg',  questions: [    {prompt: fontPreAct + "ゆ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ち" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/よ-を.jpg',  questions: [    {prompt: fontPreAct + "よ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "を" + fontPos, labels: likert_scale},  ],},
-  { filename: 'actual/る-と.jpg',  questions: [    {prompt: fontPreAct + "る" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "と" + fontPos, labels: likert_scale},  ],}
+  { filename: 'actual/む_ろ.jpg',  questions: [    {prompt: fontPreAct + "む" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ろ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/め_れ.jpg',  questions: [    {prompt: fontPreAct + "め" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "れ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/も_そ.jpg',  questions: [    {prompt: fontPreAct + "も" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "そ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/や_ほ.jpg',  questions: [    {prompt: fontPreAct + "や" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ほ" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/ゆ_ち.jpg',  questions: [    {prompt: fontPreAct + "ゆ" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "ち" + fontPos, labels: likert_scale},  ],},
+
+  { filename: 'actual/り_お.jpg',  questions: [    {prompt: fontPreAct + "り" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "お" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/る_と.jpg',  questions: [    {prompt: fontPreAct + "る" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "と" + fontPos, labels: likert_scale},  ],},
+  { filename: 'actual/を_よ.jpg',  questions: [    {prompt: fontPreAct + "を" + fontPos, labels: likert_scale},    {prompt: fontPreAct + "よ" + fontPos, labels: likert_scale},  ],}
+
 ];
-
 
 // 順番をランダマイズしたいので指定しておく
 var trials = {
