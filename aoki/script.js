@@ -28,7 +28,7 @@ var jsPsych = initJsPsych({
 // フルスクリーン開始
 var enter_fullscreen = {
   type: jsPsychFullscreen,
-  message: '<p>実験名: aoki2024-0705-01</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
+  message: '<p>実験名: aoki2024-0714-01</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
   button_label: "開始",
   fullscreen_mode: true
 }
@@ -46,15 +46,15 @@ var Page1 = {
   <br>\
   　この実験は参加を強制するものではございません。途中で答えたくないと\
   感じたり、気分が悪くなったりした場合はお申し出ください。\
-  　また、 得られた回答は全て数値化して厳重に保管し、個人が特定されないように\
+  　また、 得られた回答は全て記号化して厳重に保管し、個人が特定されないように\
   処理いたします。\
   <br><br><br>\
   【手順】<br><br>\
   　実験開始前に年齢と性別を入力してください。\
-  　次に、注視点(+)が1.5秒間モニターに表示された後、ひらがな２種類を合体させた\
+  　次に、注視点(+)が1秒間モニターに表示された後、ひらがな２種類を合体させた\
   架空の文字が5秒間表示されます。\
   　その後、表示された文字がどちらのひらがなにどれくらいの割合で似ていると\
-  感じたか、該当する直線の目盛をクリックしてください。\
+  感じたか、どれくらい文字らしく見えたか、どれくらい不気味だと感じたか、どれくらいゾワゾワと感じたかについて、該当する直線の目盛をクリックしてください。\
  <br><br></div>',
  choices: ['次へ'],
 };
@@ -190,7 +190,7 @@ var Page2Questions =
 
 var responsePage2 = {
   type: jsPsychSurveyLikert,
-  preamble: 'これらの文字から受けた印象を、該当する割合(%)を選んでください',
+  preamble: 'これらの文字から受けた印象について、該当する割合(%)を選んでください',
   scale_width: 1200 ,
   questions: Page2Questions,
   randomize_question_order: false
@@ -206,7 +206,7 @@ var fontPos = "</font></div>" ;
 // 練習試行
 // ---------------------------------------------------------------------
 var PracticeExamPictures = [
-  { filename: 'practice/ま-み.jpg',   questions: [    {prompt: fontPrePra + "ま" + fontPos, labels: likert_scale},    {prompt: fontPrePra + "み" + fontPos, labels: likert_scale},  ],},
+  { filename: 'practice/ま-み.jpg',   questions: [    {prompt: fontPrePra + "き" + fontPos, labels: likert_scale},    {prompt: fontPrePra + "み" + fontPos, labels: likert_scale},  ],},
   { filename: 'practice/を-あ.jpg',   questions: [    {prompt: fontPrePra + "を" + fontPos, labels: likert_scale},    {prompt: fontPrePra + "あ" + fontPos, labels: likert_scale},  ],},
 ];
 
@@ -225,7 +225,7 @@ for (let i = 0; i< PracticeExamPictures.length; i++) {
     stimulus_height: 1200 ,
     stimulus_width: 1200 ,
     choices: "NO_KEYS",
-    trial_duration: 3000,
+    trial_duration: 5000,
   };
 
   var responsePage1 = {
@@ -312,7 +312,7 @@ for (let i = 0; i< examPictures.length; i++) {
     stimulus_height: 1200 ,
     stimulus_width: 1200 ,
     choices: "NO_KEYS",
-    trial_duration: 3000,
+    trial_duration: 5000,
   };
 
   // 選択肢
