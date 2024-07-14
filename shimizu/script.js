@@ -28,7 +28,7 @@ var jsPsych = initJsPsych({
 // フルスクリーン開始
 var enter_fullscreen = {
   type: jsPsychFullscreen,
-  message: '<p>実験名: shimizu2024-0706-02</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
+  message: '<p>実験名: shimizu2024-07014-01</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
   button_label: "開始",
   fullscreen_mode: true
 }
@@ -54,7 +54,8 @@ var Page2 = {
   type: jsPsychSurveyText,
   questions: [
     {prompt: '学籍番号と年齢を入力してください。<br><br><br>あなたの学籍番号を入力してください。', columns: 5, required: false, name: 'age'},
-    {prompt: 'あなたの年齢を入力してください。', columns: 5, required: false, name: 'sex'},
+    {prompt: 'あなたの年齢を入力してください。',　 columns: 5, required: false, name: 'sex'},
+    {prompt: 'あなたの利き手を入力してください。(右効き=1,左効き=2)', columns: 5, required: false, name: 'hand'},
   ],
   button_label: '次へ',
 };
@@ -75,8 +76,8 @@ var Page4 = {
   stimulus: 'voice/volumecheck.mp3',
   choices: ['次へ'],
   prompt: "<br><br>\
-  音量を下げる、Fn キーとF10 キーの同時押し<br><br>\
-  音量を上げる、Fn キーとF11 キーの同時押し<br><br>\
+  音量を下げる、Fn キーとSCRLK キーの同時押し<br><br>\
+  音量を上げる、Fn キーとPAUSE キーの同時押し<br><br>\
   <br><br>再生が終わったら「次へ」を押してください。",
 //  button_html: '<img src="%choice%" />'
 };
@@ -138,7 +139,7 @@ var PracticeTrials = {
 
 var PracticePage1 = {
   type: jsPsychHtmlButtonResponse,
-  stimulus: '(練習)これから物語が流れます。左耳から流れる音声に集中して，物語を追唱してください。追唱は完璧でなくても問題ありません。<br><br>',
+  stimulus: '(練習) 　これから物語が流れます。　音声に集中して物語を追唱してください。追唱は完璧でなくても問題ありません。<br><br>',
   choices: ['次へ'],
 };
 
@@ -147,8 +148,8 @@ var Practice = {
   stimulus: 'voice/practice.mp3',
   choices: ['次へ'],
   prompt: "<br><br>\
-  音量を下げる、Fn キーとF10 キーの同時押し<br><br>\
-  音量を上げる、Fn キーとF11 キーの同時押し<br><br>\
+　音量を下げる、Fn キーとSCRLK キーの同時押し<br><br>\
+  音量を上げる、Fn キーとPAUSE キーの同時押し<br><br>\
   <br><br>再生が終わったら「次へ」を押してください。",
 }
 
@@ -159,7 +160,8 @@ var PracticePage2 = {
 };
 
   // 作成した問題1セットをキューイング
-  PracticeTrials.timeline.push(PracticePage1,Practice, PracticePage2) ;
+//  PracticeTrials.timeline.push(PracticePage1,Practice, PracticePage2) ;
+  PracticeTrials.timeline.push(PracticePage1,Practice) ;
 
 // ---------------------------------------------------------------------
 // 本番試行
@@ -187,7 +189,7 @@ var Exam = {
 
 var ExamPage2 = {
   type: jsPsychHtmlButtonResponse,
-  stimulus: '(本番)紙で確認テストを行います。　終わったらボタンを押してください。<br><br>',
+  stimulus: '(本番)これで実験を終了です。　次に紙面で物語の確認テストを行います。　実験者からの支持をお待ちください。<br><br>',
   choices: ['次へ'],
 };
 
@@ -200,4 +202,5 @@ var ExamPage2 = {
 // 実験の開始
 // ------------------------------------------------------------------------
 
-jsPsych.run([enter_fullscreen,Page1,Page2,Page3,Page4,PracticeTrials,trials,bye,exit_fullscreen]);
+//jsPsych.run([enter_fullscreen,Page1,Page2,Page3,Page4,PracticeTrials,trials,bye,exit_fullscreen]);
+jsPsych.run([enter_fullscreen,Page3,Page4,Page2,PracticeTrials,trials,bye,exit_fullscreen]);
