@@ -28,7 +28,7 @@ var jsPsych = initJsPsych({
 // フルスクリーン開始
 var enter_fullscreen = {
   type: jsPsychFullscreen,
-  message: '<p>実験名: aoki2024-0716-01</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
+  message: '<p>実験名: aoki2024-0717-01</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
   button_label: "開始",
   fullscreen_mode: true
 }
@@ -90,13 +90,13 @@ var Page4 = {
 };
 
 var Breaktime = {
-  type: jsPsychHtmlButtonResponse,
+  type: jsPsychHtmlKeyboardResponse,
   stimulus: '<div align=center> \
   休憩<br><br>\
   1分間目を閉じて休んでください。<br>\
-  準備が出来ましたら、「次へ」ボタンを押して開始してください。\
+  準備が出来ましたら、「スペースキー」を押して開始してください。\
   <br><br></div>',
- choices: ['次へ'],
+ choices: [' '],
 };
 
 
