@@ -28,7 +28,7 @@ var jsPsych = initJsPsych({
 // フルスクリーン開始
 var enter_fullscreen = {
   type: jsPsychFullscreen,
-  message: '<p>実験名: aoki2024-0717-01</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
+  message: '<p>実験名: aoki2024-0718-01</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
   button_label: "開始",
   fullscreen_mode: true
 }
@@ -184,6 +184,7 @@ var responsePage2 = {
   preamble: 'これらの文字から受けた印象について、該当する割合(%)を選んでください',
   scale_width: 1200 ,
   questions: Page2Questions,
+  button_label: '次へ',
   randomize_question_order: false
 };
 
@@ -224,6 +225,7 @@ for (let i = 0; i< PracticeExamPictures.length; i++) {
     preamble: 'これらの文字にどれくらいの割合で似ていると感じたか、該当する割合(%)を選んでください',
     scale_width: 1200 ,
     questions: PracticeExamPictures[i].questions,
+    button_label: '次へ',
     randomize_question_order: false
 };
 
@@ -312,6 +314,7 @@ for (let i = 0; i< examPictures.length; i++) {
     preamble: 'これらの文字にどれくらいの割合で似ていると感じたか、該当する割合(%)を選んでください',
     scale_width: 1200 ,
     questions: examPictures[sequence[i]].questions,
+    button_label: '次へ',
     randomize_question_order: false
   };
 
