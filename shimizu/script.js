@@ -28,7 +28,7 @@ var jsPsych = initJsPsych({
 // フルスクリーン開始
 var enter_fullscreen = {
   type: jsPsychFullscreen,
-  message: '<p>実験名: shimizu2024-07014-01</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
+  message: '<p>実験名: shimizu2024-07031-01<font color=red>高→低</font></p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
   button_label: "開始",
   fullscreen_mode: true
 }
@@ -175,7 +175,7 @@ var trials = {
 
 var ExamPage1 = {
   type: jsPsychHtmlButtonResponse,
-  stimulus: '(本番)これから物語が流れます。左耳から流れる音声に集中して，物語を追唱してください。追唱は完璧でなくても問題ありません。<br><br>',
+  stimulus: '(本番)これから物語が流れます。右耳から流れる音声に集中して，物語を追唱してください。追唱は完璧でなくても問題ありません。<br><br>',
   choices: ['次へ'],
 };
 
