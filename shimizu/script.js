@@ -16,7 +16,7 @@ function yyyymmddhhmise() {
 // ------------------------------------------------------------------------
 // 説明文やお約束のパーツ
 // ------------------------------------------------------------------------
-var expname  = "shimizu2024-0801-"
+var expname  = "shimizu2024-0801-002-"
 var filename = expname + yyyymmddhhmise() + ".csv" ;
 
 // alert(expsubject) ;
@@ -58,9 +58,9 @@ var Page1 = {
 var Page2 = {
   type: jsPsychSurveyText,
   questions: [
-    {prompt: '学籍番号と年齢を入力してください。<br><br><br>あなたの学籍番号を入力してください。', columns: 5, required: false, name: 'age'},
-    {prompt: 'あなたの年齢を入力してください。',　 columns: 5, required: false, name: 'sex'},
-    {prompt: 'あなたの利き手を入力してください。(右効き=1,左効き=2)', columns: 5, required: false, name: 'hand'},
+    {prompt: '学籍番号と年齢を入力してください。<br><br><br>あなたの学籍番号を入力してください。', columns: 5, required: true, name: 'age'},
+    {prompt: 'あなたの年齢を入力してください。',　 columns: 5, required: true, name: 'sex'},
+    {prompt: 'あなたの利き手を入力してください。(右効き=1,左効き=2)', columns: 5, required: true, name: 'hand'},
   ],
   button_label: '次へ',
 };
@@ -186,6 +186,7 @@ var ExamPage1 = {
 
 var Exam = {
   type: jsPsychAudioButtonResponse,
+  response_allowed_while_playing: false ,
   stimulus: voicefile,
   choices: ['次へ'],
   prompt: "<br><br>\
