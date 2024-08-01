@@ -12,23 +12,28 @@ function yyyymmddhhmise() {
     var answer = yyyy + mm + dd + "-" + hh + mm + se ;
     return (answer);
   }
-var filename = "shimizu2024-" + yyyymmddhhmise() + ".csv" ;
-
-var jsPsych = initJsPsych({
-  on_finish: function() {
-    jsPsych.data.get().localSave('csv', filename);
-//    jsPsych.data.displayData();
-  }
-});
 
 // ------------------------------------------------------------------------
 // 説明文やお約束のパーツ
 // ------------------------------------------------------------------------
+var expname  = "shimizu2024-0801-"
+var filename = expname + yyyymmddhhmise() + ".csv" ;
 
+// alert(expsubject) ;
+// alert(voicefile) ;
+
+// ここから開始
+  var jsPsych = initJsPsych({
+    on_finish: function() {
+      jsPsych.data.get().localSave('csv', filename);
+  //    jsPsych.data.displayData();
+    }
+  });
+  
 // フルスクリーン開始
 var enter_fullscreen = {
   type: jsPsychFullscreen,
-  message: '<p>実験名: shimizu2024-07031-01<font color=red>高→低</font></p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
+  message: '<p>実験名: ' + expname + expsubject + '</p><p>開始ボタンを押すと全画面表示で実験が始まります。</p>',
   button_label: "開始",
   fullscreen_mode: true
 }
@@ -181,7 +186,7 @@ var ExamPage1 = {
 
 var Exam = {
   type: jsPsychAudioButtonResponse,
-  stimulus: 'voice/exam.mp3',
+  stimulus: voicefile,
   choices: ['次へ'],
   prompt: "<br><br>\
   <br><br>再生が終わったら「次へ」を押してください。",
